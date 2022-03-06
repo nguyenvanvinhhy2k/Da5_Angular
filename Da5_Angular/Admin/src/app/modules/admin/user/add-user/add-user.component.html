@@ -1,0 +1,28 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    
+    <form [formGroup]="form" enctype="multipart/form-data"  style="width: 400px; margin-top: 100px; margin-left: 330px">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Họ tên</label>
+          <input type="email" formControlName="FullName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="FullName">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Tên tài khoản</label>
+            <input type="email" formControlName="UserName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="UserName">
+          </div>
+          <div class="form-group" *ngIf="id!=undefined ? '':'hide'">
+            <label for="exampleInputEmail1">Mật khẩu</label>
+            <input type="email" formControlName="PassWord" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="PassWord">
+          </div>
+        <div class="form-group">
+          <button *ngIf="id==undefined?'hide':''" type="submit" (click)="addProduct()" class="btn btn-primary">{{SubmitText}}</button>
+          <button *ngIf="id!=undefined?'hide':''" class="btn btn-primary" (click)="Update()">{{SubmitText}}</button>
+        </div>
+       
+      </form>
+</div>
+
+
+<!-- /.container-fluid -->

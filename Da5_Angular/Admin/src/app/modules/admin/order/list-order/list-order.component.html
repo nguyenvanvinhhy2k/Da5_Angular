@@ -1,0 +1,104 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <div class="card shadow mb-4">
+    <div
+      class="card-header py-3"
+      style="display: flex; justify-content: space-between"
+    >
+      <form>
+        <div class="input-group">
+          <input
+            type="text"
+            [(ngModel)]="keyWord"
+            #key
+            class="form-control bg-light border-0 small"
+            placeholder="Tìm kiếm..."
+            aria-label="Search"
+            aria-describedby="basic-addon2"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-primary"
+              type="button"
+              (click)="search(key.value)"
+            >
+              <i class="fas fa-search fa-sm"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      <a
+        [routerLink]="['/admin/order/orderSuccess']"
+        routerLinkActive="router-link-active"
+        class="btn btn-primary"
+        >Đơn hàng thành công</a
+      >
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tên khách hàng</th>
+              <th>SĐT</th>
+              <th>Địa chỉ</th>
+              <th>Ngày đặt</th>
+              <th>Trạng thái</th>
+              <th>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listOrder; index as i">
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.custemerName }}</td>
+              <td>{{ item.custemerPhone }}</td>
+              <td>{{ item.custemerAddress }}</td>
+              <td>{{ item.createDate | date }}</td>
+              <th>
+                <select
+                  #selectedCategory
+                  style="width: 150px; height: 32px; outline: none"
+                  (change)="
+                    UpdateOrderStatus(this.selectedCategory.value, item.id)
+                  "
+                >
+                  <option
+                    *ngFor="let c of status"
+                    [selected]="c.id == item.status"
+                    value="{{ c.id }}"
+                  >
+                    {{ c.status_name }}
+                  </option>
+                </select>
+              </th>
+              <td>
+                <a
+                  class="btn btn-primary mr-2"
+                  [routerLink]="['/admin/order/orderdetail', item.id]"
+                >
+                  View
+                </a>
+                <a
+                  class="btn btn-primary mr-2"
+                  [routerLink]="['/admin/order/orderdetail', item.id]"
+                >
+                  Edit
+                </a>
+                <button type="" class="btn btn-warning" (click)="Delete()">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->

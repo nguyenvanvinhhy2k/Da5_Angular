@@ -1,0 +1,123 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+
+  <form
+    [formGroup]="form"
+    enctype="multipart/form-data"
+    style="width: 400px px; margin: 0 auto;display: flex;"
+  >
+  <div style="padding:40px;margin-left: 160px;">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Tên sản phẩm</label>
+      <input
+        type="email"
+        formControlName="Name"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Tên sản phẩm"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Gía bán</label>
+      <input
+        type="text"
+        formControlName="Price"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Gía bán"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Gía nhập</label>
+      <input
+        type="text"
+        formControlName="OriginalPrice"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Gía nhập"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Số lượng</label>
+      <input
+        type="text"
+        formControlName="Quantity"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="số lượng"
+      />
+    </div>
+    </div>
+    <div style="padding:40px">
+    <div class="form-group">
+      <label for="exampleInputPassword1">Size</label>
+      <input
+        type="text"
+        formControlName="Size"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Size"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Mô tả</label>
+      <input
+        type="text"
+        formControlName="Description"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Mô tả"
+      />
+    </div>
+    <div class="form-group">
+      <label for="category">Loại sản phẩm</label>
+      <select
+        name=""
+        id="category"
+        class="form-control"
+        formControlName="CateID"
+      >
+        <option
+          *ngFor="let item of listCategory; let i = index"
+          value="{{ item.id }}"
+        >
+          {{ item.name }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Hình ảnh</label>
+      <input
+        type="file"
+        #file
+        formControlName="Image"
+        class="form-control"
+        (change)="uploadFile(file.files)"
+        id="exampleInputPassword1"
+      />
+    </div>
+    <div class="form-group">
+      <button
+        *ngIf="id == undefined ? 'hide' : ''"
+        type="submit"
+        (click)="addProduct()"
+        class="btn btn-primary"
+      >
+        {{ SubmitText }}
+      </button>
+      <button
+        *ngIf="id != undefined ? 'hide' : ''"
+        class="btn btn-primary"
+        (click)="Update()"
+      >
+        {{ SubmitText }}
+      </button>
+    </div>
+  </div>
+   
+  </form>
+</div>
+
+<!-- /.container-fluid -->

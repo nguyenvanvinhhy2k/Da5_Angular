@@ -1,0 +1,93 @@
+<!-- Product Details Section Begin -->
+<section class="product-details spad">
+  <div class="container">
+    <h1 style="padding-bottom: 30px;
+    text-align: center;">Chi tiết sản phẩm</h1>
+    <div class="row" style="background-color: white;padding: 30px 0;">
+      
+
+      <div class="col-lg-6 col-md-6">
+        <div class="product__details__pic">
+          <div class="product__details__pic__item">
+            <img
+              class="product__details__pic__item--large"
+              src="https://localhost:5001/StaticFiles/Images/{{
+                productDetail.image
+              }}"
+              alt=""
+            />
+          </div>
+          <div class="product__details__pic__slider owl-carousel">
+            <img
+              data-imgbigurl="img/product/details/product-details-2.jpg"
+              src="img/product/details/thumb-1.jpg"
+              alt=""
+            />
+            <img
+              data-imgbigurl="img/product/details/product-details-3.jpg"
+              src="img/product/details/thumb-2.jpg"
+              alt=""
+            />
+            <img
+              data-imgbigurl="img/product/details/product-details-5.jpg"
+              src="img/product/details/thumb-3.jpg"
+              alt=""
+            />
+            <img
+              data-imgbigurl="img/product/details/product-details-4.jpg"
+              src="img/product/details/thumb-4.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="product__details__text">
+          <h3>{{ productDetail.name }}</h3>
+          <div class="product__details__rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <span>(18 reviews)</span>
+          </div>
+          <div class="product__details__price">
+            {{ productDetail.price | number }} vnđ
+          </div>
+
+          <div class="product__details__quantity">
+            <div class="quantity">
+              <div class="pro-qty">
+                <input type="text" value="1" />
+              </div>
+            </div>
+          </div>
+          <a href="#" (click)="addToCart()" class="primary-btn">ADD TO CARD</a>
+          <a href="#" class="heart-icon"
+            ><span class="icon_heart_alt"></span
+          ></a>
+          <ul>
+      
+            <li style="font-weight:900">
+              Size:  <span>{{ productDetail.size }}</span>
+            </li>
+            <li style="font-weight:900">Số lượng: 60</li>
+            <li style="font-weight:900">Mô tả:   {{ productDetail.description }}</li>
+
+            <li>
+              <b>Share on</b>
+              <div class="share">
+                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter-square"></i></a>
+                <a href="#"><i class="fab fa-pinterest-square"></i></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Product Details Section End -->

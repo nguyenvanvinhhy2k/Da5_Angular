@@ -1,0 +1,116 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <div class="card shadow mb-4">
+    <div
+      class="card-header py-3"
+      style="display: flex; justify-content: space-between"
+    >
+      <form>
+        <div class="input-group">
+          <input
+            type="text"
+            [(ngModel)]="keyWord"
+            #key
+            class="form-control bg-light border-0 small"
+            placeholder="Tìm kiếm..."
+            aria-label="Search"
+            aria-describedby="basic-addon2"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-primary"
+              type="button"
+              (click)="search(key.value)"
+            >
+              <i class="fas fa-search fa-sm"></i>
+            </button>
+            <button
+              style="border-radius: 4px !important"
+              class="btn btn-danger ml-3"
+              (click)="refresh()"
+            >
+              Refresh
+            </button>
+          </div>
+        </div>
+      </form>
+      <a
+        [routerLink]="['/admin/product/add-product']"
+        routerLinkActive="router-link-active"
+        class="btn btn-primary"
+        >Thêm sản phẩm</a
+      >
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tên sản phẩm</th>
+              <th>Gía bán</th>
+              <th>Gía nhập</th>
+              <th>Số lượng</th>
+              <th>Hình ảnh</th>
+              <th>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listProduct.items; index as i">
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.price | number: "1.0-0" }}</td>
+              <td>{{ item.originalPrice | number: "1.0-0" }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>
+                <img
+                  style="width: 70px"
+                  src="https://localhost:5001/StaticFiles/Images/{{
+                    item.image
+                  }}"
+                  alt=""
+                />
+              </td>
+              <td>
+                <a
+                  class="btn btn-primary mr-2"
+                  [routerLink]="['/admin/product/edit-product', item.id]"
+                >
+                  Edit
+                </a>
+                <button
+                  type=""
+                  class="btn btn-warning"
+                  (click)="Delete(item.id)"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- /.card-body -->
+        <!-- <div class="card-footer" style="background: white;">
+            <nav aria-label="Contacts Page Navigation" style="float: right;">
+              <ngb-pagination [collectionSize]="totalRecords" [pageSize]="pageSize" [(page)]="page" [maxSize]="10" [rotate]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+            </nav>
+          </div> -->
+        <!-- /.card-body -->
+
+        <!-- content here -->
+
+        <div class="card-footer" style="background: white">
+          <nav aria-label="Contacts Page Navigation" style="float: right">
+            <!-- <ngb-pagination ></ngb-pagination> -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->

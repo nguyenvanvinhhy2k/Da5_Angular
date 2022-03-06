@@ -1,0 +1,53 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3" style="display: flex;justify-content: space-between;">
+            <form>
+                <div class="input-group">
+                    <input type="text" [(ngModel)]="keyWord" #key class="form-control bg-light border-0 small" placeholder="Search for..."
+                        aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" (click)="search(key.value)">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                        <button style="border-radius: 4px !important;" class="btn btn-danger ml-3" (click)="refresh()">Refresh</button>
+                    </div>
+                </div>
+            </form>
+            <a [routerLink]="['/admin/category/addCategory']" routerLinkActive="router-link-active"  class="btn btn-primary">Thêm loại sản phẩm</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="w20">ID</th>
+                            <th class="w20">Tên loại sản phẩm</th>
+                         
+                            <th class="w20">Thứ tự</th>        
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>                  
+                    <tbody>
+                        <tr *ngFor="let item of listCategory.items;index as i">
+                            <td>{{i+1}}</td>
+                            <td>{{item.name}}</td>
+                         
+                            <td>{{item.sortOrder}}</td>
+                           
+                            <td>
+                                <a class="btn btn-primary mr-2" [routerLink]="['/admin/category/edit',item.id]" routerLinkActive="router-link-active">
+                                    Edit
+                                </a>
+                                <button type="" class="btn btn-warning" (click)="delete(item.id)">Delete</button>
+                            </td>
+                        </tr>
+                                                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
